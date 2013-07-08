@@ -19,7 +19,6 @@
 		1F61D8161783328F00FAF0BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F61D8141783328F00FAF0BF /* InfoPlist.strings */; };
 		1F61D8181783328F00FAF0BF /* OnkyoSimulatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61D8171783328F00FAF0BF /* OnkyoSimulatorTests.m */; };
 		1F61D82417835B2900FAF0BF /* DiscoveryListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61D82317835B2900FAF0BF /* DiscoveryListener.m */; };
-		1F61D8261783718F00FAF0BF /* eiscp.dat in Resources */ = {isa = PBXBuildFile; fileRef = 1F61D8251783718F00FAF0BF /* eiscp.dat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		1F61D8171783328F00FAF0BF /* OnkyoSimulatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnkyoSimulatorTests.m; sourceTree = "<group>"; };
 		1F61D82217835B2900FAF0BF /* DiscoveryListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryListener.h; sourceTree = "<group>"; };
 		1F61D82317835B2900FAF0BF /* DiscoveryListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryListener.m; sourceTree = "<group>"; };
-		1F61D8251783718F00FAF0BF /* eiscp.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = eiscp.dat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,10 +121,10 @@
 				1F61D7FF1783328E00FAF0BF /* AppDelegate.h */,
 				1F61D8001783328E00FAF0BF /* AppDelegate.m */,
 				1F61D8021783328E00FAF0BF /* MainMenu.xib */,
-				1F61D8051783328E00FAF0BF /* Images.xcassets */,
-				1F61D7F41783328E00FAF0BF /* Supporting Files */,
 				1F61D82217835B2900FAF0BF /* DiscoveryListener.h */,
 				1F61D82317835B2900FAF0BF /* DiscoveryListener.m */,
+				1F61D7F41783328E00FAF0BF /* Supporting Files */,
+				1F61D8051783328E00FAF0BF /* Images.xcassets */,
 			);
 			path = OnkyoSimulator;
 			sourceTree = "<group>";
@@ -134,7 +132,6 @@
 		1F61D7F41783328E00FAF0BF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1F61D8251783718F00FAF0BF /* eiscp.dat */,
 				1F61D7F51783328E00FAF0BF /* OnkyoSimulator-Info.plist */,
 				1F61D7F61783328E00FAF0BF /* InfoPlist.strings */,
 				1F61D7F91783328E00FAF0BF /* main.m */,
@@ -240,7 +237,6 @@
 			files = (
 				1F61D7F81783328E00FAF0BF /* InfoPlist.strings in Resources */,
 				1F61D8061783328E00FAF0BF /* Images.xcassets in Resources */,
-				1F61D8261783718F00FAF0BF /* eiscp.dat in Resources */,
 				1F61D7FE1783328E00FAF0BF /* Credits.rtf in Resources */,
 				1F61D8041783328E00FAF0BF /* MainMenu.xib in Resources */,
 			);

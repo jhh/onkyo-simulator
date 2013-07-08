@@ -20,7 +20,19 @@
     _delegate = delegate;
     _sock = [self setup_sock];
     _closed = NO;
-    _response = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"eiscp" withExtension:@"dat"]];
+
+    NSData *message = [@"!1ECNOnkyo Simulator/60128/DX/1234567890AB\x0d\x0a" dataUsingEncoding:NSASCIIStringEncoding];
+
+    NSMutableData *tmpData = [NSMutableData dataWithCapacity:100];
+    [tmpData appendData:[@"ISCP" dataUsingEncoding:NSASCIIStringEncoding]];
+    uint32_t swapped_int = CFSwapInt32HostToBig(16);
+    [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
+    swapped_int = CFSwapInt32HostToBig((uint32_t)[message length]);
+    [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
+    swapped_int = CFSwapInt32HostToBig(0x01000000);
+    [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
+    [tmpData appendData:message];
+    _response = [tmpData copy];
     return self;
 }
 

@@ -8,7 +8,7 @@ Onkyo Simulator is released under the MIT license. See [LICENSE.md][license].
 
 ## See Also
 - [https://github.com/jhh/onkyokit](https://github.com/jhh/onkyokit)  
-  Command line tool for Mac OS X to interact with Onkyo receivers.
+  Onkyo eISCP framework for Objective-C.
 
 - [ISCP-V1.21_2011.xls](http://michael.elsdoerfer.name/onkyo/ISCP-V1.21_2011.xls)  
   Onkyo protocol documentation, in excel format.

@@ -46,7 +46,7 @@
 		1F61D8001783328E00FAF0BF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1F61D8031783328E00FAF0BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1F61D8051783328E00FAF0BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1F61D80B1783328F00FAF0BF /* OnkyoSimulatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = folder; includeInIndex = 0; path = OnkyoSimulatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F61D80B1783328F00FAF0BF /* OnkyoSimulatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnkyoSimulatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F61D80C1783328F00FAF0BF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		1F61D8131783328F00FAF0BF /* OnkyoSimulatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OnkyoSimulatorTests-Info.plist"; sourceTree = "<group>"; };
 		1F61D8151783328F00FAF0BF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -206,6 +206,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jeff Hutchison";
 				TargetAttributes = {
+					1F61D7E91783328E00FAF0BF = {
+						DevelopmentTeam = MXZKJAE7Q6;
+					};
 					1F61D80A1783328F00FAF0BF = {
 						TestTargetID = 1F61D7E91783328E00FAF0BF;
 					};

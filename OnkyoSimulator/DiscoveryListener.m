@@ -21,17 +21,24 @@
     _sock = [self setup_sock];
     _closed = NO;
 
-    NSData *message = [@"!1ECNOnkyo Simulator/60128/DX/1234567890AB\x0d\x0a" dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *currentHost = [[NSHost currentHost] localizedName];
+    NSRange stringRange = {0, MIN([currentHost length], 12)};
+    // adjust the range to include dependent chars, its a Unicode thing
+    stringRange = [currentHost rangeOfComposedCharacterSequencesForRange:stringRange];
+    NSString *shortString = [currentHost substringWithRange:stringRange];
+
+    NSString *message = [NSString stringWithFormat:@"!1ECNOnkyo Simulator/60128/DX/%@\x0d\x0a", shortString];
+    NSData *data = [message dataUsingEncoding:NSASCIIStringEncoding];
 
     NSMutableData *tmpData = [NSMutableData dataWithCapacity:100];
     [tmpData appendData:[@"ISCP" dataUsingEncoding:NSASCIIStringEncoding]];
     uint32_t swapped_int = CFSwapInt32HostToBig(16);
     [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
-    swapped_int = CFSwapInt32HostToBig((uint32_t)[message length]);
+    swapped_int = CFSwapInt32HostToBig((uint32_t)[data length]);
     [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
     swapped_int = CFSwapInt32HostToBig(0x01000000);
     [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
-    [tmpData appendData:message];
+    [tmpData appendData:data];
     _response = [tmpData copy];
     return self;
 }

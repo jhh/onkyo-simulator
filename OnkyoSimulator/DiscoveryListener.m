@@ -28,7 +28,7 @@
     NSString *shortString = [currentHost substringWithRange:stringRange];
 
     NSString *message = [NSString stringWithFormat:@"!1ECNOnkyo Simulator/60128/DX/%@\x0d\x0a", shortString];
-    NSData *data = [message dataUsingEncoding:NSASCIIStringEncoding];
+    NSData *data = [message dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 
     NSMutableData *tmpData = [NSMutableData dataWithCapacity:100];
     [tmpData appendData:[@"ISCP" dataUsingEncoding:NSASCIIStringEncoding]];

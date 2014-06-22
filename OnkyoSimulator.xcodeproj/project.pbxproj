@@ -19,6 +19,7 @@
 		1F61D8161783328F00FAF0BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F61D8141783328F00FAF0BF /* InfoPlist.strings */; };
 		1F61D8181783328F00FAF0BF /* OnkyoSimulatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61D8171783328F00FAF0BF /* OnkyoSimulatorTests.m */; };
 		1F61D82417835B2900FAF0BF /* DiscoveryListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F61D82317835B2900FAF0BF /* DiscoveryListener.m */; };
+		1F923BB41956AAB70053E8D5 /* DiscoveryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F923BB31956AAB70053E8D5 /* DiscoveryResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		1F61D8171783328F00FAF0BF /* OnkyoSimulatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnkyoSimulatorTests.m; sourceTree = "<group>"; };
 		1F61D82217835B2900FAF0BF /* DiscoveryListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryListener.h; sourceTree = "<group>"; };
 		1F61D82317835B2900FAF0BF /* DiscoveryListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryListener.m; sourceTree = "<group>"; };
+		1F923BB21956AAB70053E8D5 /* DiscoveryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryResponse.h; sourceTree = "<group>"; };
+		1F923BB31956AAB70053E8D5 /* DiscoveryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				1F61D8021783328E00FAF0BF /* MainMenu.xib */,
 				1F61D82217835B2900FAF0BF /* DiscoveryListener.h */,
 				1F61D82317835B2900FAF0BF /* DiscoveryListener.m */,
+				1F923BB21956AAB70053E8D5 /* DiscoveryResponse.h */,
+				1F923BB31956AAB70053E8D5 /* DiscoveryResponse.m */,
 				1F61D7F41783328E00FAF0BF /* Supporting Files */,
 				1F61D8051783328E00FAF0BF /* Images.xcassets */,
 			);
@@ -261,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F61D8011783328E00FAF0BF /* AppDelegate.m in Sources */,
+				1F923BB41956AAB70053E8D5 /* DiscoveryResponse.m in Sources */,
 				1F61D7FA1783328E00FAF0BF /* main.m in Sources */,
 				1F61D82417835B2900FAF0BF /* DiscoveryListener.m in Sources */,
 			);
@@ -419,7 +425,7 @@
 		1F61D81F1783328F00FAF0BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OnkyoSimulator.app/Contents/MacOS/OnkyoSimulator";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Onkyo Simulator.app/Contents/MacOS/Onkyo Simulator";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -432,6 +438,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "OnkyoSimulatorTests/OnkyoSimulatorTests-Info.plist";
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -441,7 +448,7 @@
 		1F61D8201783328F00FAF0BF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OnkyoSimulator.app/Contents/MacOS/OnkyoSimulator";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Onkyo Simulator.app/Contents/MacOS/Onkyo Simulator";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -450,6 +457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OnkyoSimulator/OnkyoSimulator-Prefix.pch";
 				INFOPLIST_FILE = "OnkyoSimulatorTests/OnkyoSimulatorTests-Info.plist";
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

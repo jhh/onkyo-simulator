@@ -8,38 +8,27 @@
 @import Darwin;
 #import "DiscoveryListener.h"
 #import "AppDelegate.h"
+#import "DiscoveryResponse.h"
 
 #define BUFLEN 100
+
+@interface DiscoveryListener ()
+@property(weak, nonatomic) AppDelegate *delegate;
+@property(nonatomic) DiscoveryResponse *response;
+@property(nonatomic) int sock;
+@end
 
 @implementation DiscoveryListener
 
 - (instancetype)initWithDelegate:(AppDelegate *)delegate
 {
     self = [super init];
-    if (self == nil) return nil;
-    _delegate = delegate;
-    _sock = [self setup_sock];
-    _closed = NO;
-
-    NSString *currentHost = [[NSHost currentHost] localizedName];
-    NSRange stringRange = {0, MIN([currentHost length], 12)};
-    // adjust the range to include dependent chars, its a Unicode thing
-    stringRange = [currentHost rangeOfComposedCharacterSequencesForRange:stringRange];
-    NSString *shortString = [currentHost substringWithRange:stringRange];
-
-    NSString *message = [NSString stringWithFormat:@"!1ECNOnkyo Simulator/60128/DX/%@\x0d\x0a", shortString];
-    NSData *data = [message dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-
-    NSMutableData *tmpData = [NSMutableData dataWithCapacity:100];
-    [tmpData appendData:[@"ISCP" dataUsingEncoding:NSASCIIStringEncoding]];
-    uint32_t swapped_int = CFSwapInt32HostToBig(16);
-    [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
-    swapped_int = CFSwapInt32HostToBig((uint32_t)[data length]);
-    [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
-    swapped_int = CFSwapInt32HostToBig(0x01000000);
-    [tmpData appendBytes:&swapped_int length:sizeof(swapped_int)];
-    [tmpData appendData:data];
-    _response = [tmpData copy];
+    if (self) {
+        _delegate = delegate;
+        _sock = [self setup_sock];
+        _closed = NO;
+        _response = [[DiscoveryResponse alloc] init];
+    }
     return self;
 }
 
@@ -50,7 +39,7 @@
 
 - (void)close
 {
-    if (close(_sock) == -1) {
+    if (close(self.sock) == -1) {
         NSLog(@"%s close: %s", __PRETTY_FUNCTION__, strerror(errno));
     }
     _closed = YES;
@@ -85,14 +74,14 @@
     char recv_buf[BUFLEN];
 
     bzero(&recv_buf, BUFLEN);
-    if ((numbytes = recvfrom(_sock, recv_buf, BUFLEN, 0, (struct sockaddr *)&their_addr, &their_addr_len)) == -1) {
+    if ((numbytes = recvfrom(self.sock, recv_buf, BUFLEN, 0, (struct sockaddr *)&their_addr, &their_addr_len)) == -1) {
         NSLog(@"%s recvfrom: %s", __PRETTY_FUNCTION__, strerror(errno));
         return;
     }
 
     [self log:[NSString stringWithFormat:@"received %li bytes from %s", numbytes, inet_ntoa(their_addr.sin_addr)]];
 
-    if ((numbytes = sendto(_sock, [_response bytes], [_response length], 0, (struct sockaddr *)&their_addr, their_addr_len)) == -1) {
+    if ((numbytes = sendto(self.sock, [self.response bytes], [self.response length], 0, (struct sockaddr *)&their_addr, their_addr_len)) == -1) {
         NSLog(@"%s sendto: %s", __PRETTY_FUNCTION__, strerror(errno));
         return;
     }
@@ -105,7 +94,7 @@
 
 - (void)log:(NSString *)msg
 {
-    [_delegate performSelectorOnMainThread:@selector(logToTextView:) withObject:msg waitUntilDone:NO];
+    [self.delegate performSelectorOnMainThread:@selector(logToTextView:) withObject:msg waitUntilDone:NO];
 }
 
 @end

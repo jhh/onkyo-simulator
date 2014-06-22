@@ -9,11 +9,7 @@
 #import <Foundation/Foundation.h>
 @class AppDelegate;
 
-@interface DiscoveryListener : NSObject {
-    __weak AppDelegate *_delegate;
-    int _sock;
-    NSData *_response;
-}
+@interface DiscoveryListener : NSObject
 
 @property (readonly, getter = isClosed) BOOL closed;
 
